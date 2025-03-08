@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZEBOT - LAUNCHING SOON</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #4285f4;
+            --accent: #ff6b6b;
+            --dark: #121212;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #121212 0%, #2c3e50 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 15px rgba(66, 133, 244, 0.5);
+        }
+
+        .social-icons a {
+            color: white;
+            margin-left: 1.5rem;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px) rotate(15deg);
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4285f4, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1rem auto;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-item h2 {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin: 0.5rem 0;
+            line-height: 1;
+        }
+
+        .countdown-item span {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 2px;
+        }
+
+        .notify-form {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 700px;
+            margin: 3rem auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .notify-form input {
+            flex: 1;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .notify-form button {
+            padding: 1.2rem 2.5rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .notify-form button:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--secondary);
+        }
+
+        .feature-desc {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+
+        /* STEM Hub Section */
+        .stem-hub {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            display: none;
+            grid-column: 1 / -1;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .stem-hub.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stem-hub h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .stem-hub p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        .stem-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stem-product {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stem-product:hover {
+            transform: translateY(-5px);
+        }
+
+        .stem-product h3 {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stem-product p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        footer {
+            padding: 3rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .countdown {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .countdown-item {
+                width: 100%;
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">OZEBOT</div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>LAUNCHING SOON</h1>
+        <p>Pioneering the next generation of robotics and IoT solutions. We're preparing something revolutionary in automation, AI, and immersive technologies - stay tuned!</p>
+        
+   
+
+    </div>
+
+    <div class="features" id="featuresContainer">
+
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-robot"></i></div>
+            <div class="feature-title">Advanced Robotics</div>
+            <div class="feature-desc">Next-gen automation solutions for industries and education</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-brain"></i></div>
+            <div class="feature-title">AI Innovation</div>
+            <div class="feature-desc">Machine learning integrated with robotic systems</div>
+        </div>
+
+
+
+
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-hand-sparkles"></i></div>
+            <div class="feature-title">Bionics</div>
+            <div class="feature-desc">Human-inspired robotic systems for healthcare and beyond</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-user-cog"></i></div>
+            <div class="feature-title">Human Helper Robots</div>
+            <div class="feature-desc">Assistive robots for everyday tasks and industries</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-tractor"></i></div>
+            <div class="feature-title">Agriculture Robotics</div>
+            <div class="feature-desc">Automated solutions for smart farming, precision agriculture, and crop monitoring.</div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-microchip"></i></div>
+            <div class="feature-title">IoT Solutions</div>
+            <div class="feature-desc">Smart connectivity for robotics and automation</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-vr-cardboard"></i></div>
+            <div class="feature-title">AR/VR Integration</div>
+            <div class="feature-desc">Immersive training and simulation environments for robotics</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-print"></i></div>
+            <div class="feature-title">3D Printing & CAD</div>
+            <div class="feature-desc">Precision 3D modeling and printing solutions for robotics components</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-car"></i></div>
+            <div class="feature-title">RC Enthusiast Solutions</div>
+            <div class="feature-desc">High-performance robotics for RC hobbyists and professionals</div>
+        </div>
+        <div class="feature-card" onclick="toggleStemHub(this)">
+            <div class="feature-icon"><i class="fas fa-school"></i></div>
+            <div class="feature-title">STEM Hub</div>
+            <div class="feature-desc">Click to explore our STEM products and teaching methods</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 OZEBOT. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // Stem Hub Toggle
+        let activeStemHub = null;
+
+        function toggleStemHub(clickedCard) {
+            const featuresContainer = document.getElementById('featuresContainer');
+            
+            // Close existing Stem Hub if open
+            if (activeStemHub) {
+                activeStemHub.remove();
+                activeStemHub = null;
+                return;
+            }
+
+            // Create Stem Hub content
+            const stemHub = document.createElement('div');
+            stemHub.className = 'stem-hub active';
+            stemHub.innerHTML = `
+                <h2>STEM Hub: Empowering Future Innovators</h2>
+                <p>We teach programming and new tech skills in a practical way, helping students apply their knowledge to real-world projects. Our STEM products and teaching methods focus on hands-on learning.</p>
+                <div class="stem-products">
+                    <div class="stem-product">
+                        <h3>Programming Kits</h3>
+                        <p>Interactive kits to learn coding through robotics.</p>
+                    </div>
+                    <div class="stem-product">
+                        <h3>Teaching Resources</h3>
+                        <p>Curriculum-aligned resources for educators.</p>
+                    </div>
+                    <div class="stem-product">
+                        <h3>Practical Education</h3>
+                        <p>Hands-on projects to develop real-world skills.</p>
+                    </div>
+                </div>
+            `;
+
+            // Insert Stem Hub after clicked card
+            const cardIndex = Array.from(featuresContainer.children).indexOf(clickedCard);
+            featuresContainer.insertBefore(stemHub, featuresContainer.children[cardIndex + 1]);
+
+            activeStemHub = stemHub;
+        }
+               function toggleStemHub(clickedCard) {
+            const featuresContainer = document.getElementById('featuresContainer');
+            
+            // Close existing Stem Hub if open
+            if (activeStemHub) {
+                activeStemHub.remove();
+                activeStemHub = null;
+                return;
+            }
+
+            // Create Stem Hub content
+            const stemHub = document.createElement('div');
+            stemHub.className = 'stem-hub active';
+            stemHub.innerHTML = `
+                <h2>STEM Hub: Empowering Future Innovators</h2>
+                <p>We teach programming and new tech skills in a practical way, helping students apply their knowledge to real-world projects. Our STEM products and teaching methods focus on hands-on learning.</p>
+                <div class="stem-products">
+                    <div class="stem-product">
+                        <h3>Programming Kits</h3>
+                        <p>Interactive kits to learn coding through robotics.</p>
+                    </div>
+                    <div class="stem-product">
+                        <h3>Teaching Resources</h3>
+                        <p>Curriculum-aligned resources for educators.</p>
+                    </div>
+                    <div class="stem-product">
+                        <h3>Practical Education</h3>
+                        <p>Hands-on projects to develop real-world skills.</p>
+                    </div>
+                </div>
+            `;
+
+            // Insert Stem Hub after clicked card
+            const cardIndex = Array.from(featuresContainer.children).indexOf(clickedCard);
+            featuresContainer.insertBefore(stemHub, featuresContainer.children[cardIndex + 1]);
+
+            activeStemHub = stemHub;
+        }
+
+        
+
+    </script>
+</body>
+</html>
